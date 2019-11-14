@@ -70,18 +70,11 @@ public class FXMLGUIController implements Initializable{
 		double[] origen2 = new double[2];
 		double[] destino1 = new double[2];
 		double[] destino2 = new double[2];
-		gc.setStroke(Color.BLACK);
-		drawbase(origen1, origen2);
-		gc.setStroke(Color.BLUE);
-		drawbase(destino1, destino2);
 		if (Origen.getSelectedToggle().equals(canonor)) {
 			origen1[0] = 1;
 			origen1[1] = 0;
 			origen2[0] = 0;
 			origen2[1] = 1;
-			gc.setLineWidth(2);
-			gc.setStroke(Color.RED);
-			drawRect(0,0,inicial[0], inicial[1]);
 		}else{
 			try {
 				origen1[0] = Double.parseDouble(baseorigen1i.getText());
@@ -94,8 +87,6 @@ public class FXMLGUIController implements Initializable{
 				origen2[0] = 0;
 				origen2[1] = 0;
 			}
-			gc.setStroke(Color.RED);
-			drawRect(0,0,(inicial[0]*origen1[0])+(inicial[1]*origen2[0]),(inicial[0]*origen1[1])+(inicial[1]*origen2[1]));
 		}
 		baseorigen1i.clear();
 		baseorigen1j.clear();
@@ -124,6 +115,13 @@ public class FXMLGUIController implements Initializable{
 		basedestino2i.clear();
 		basedestino2j.clear();
 		clear();
+		gc.setStroke(Color.BLACK);
+		drawbase(origen1, origen2);
+		gc.setStroke(Color.BLUE);
+		drawbase(destino1, destino2);
+		gc.setStroke(Color.RED);
+		gc.setLineWidth(2);
+		drawRect(0,0,(inicial[0]*origen1[0])+(inicial[1]*origen2[0]),(inicial[0]*origen1[1])+(inicial[1]*origen2[1]));
 		double[][] matriz = mt(origen1, origen2, destino1, destino2);
 		double[] resultado = mult(inicial, matriz);
 		resultadoi.setText(String.valueOf(resultado[0]));
