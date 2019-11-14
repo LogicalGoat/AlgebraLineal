@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLGUIController">
+   <children>
+      <TabPane layoutX="86.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Convertir">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="(">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="30.0" prefWidth="171.0" text="Convertir el vector">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </graphic>
+                                    </Label>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                       <children>
+                                          <TextField fx:id="iniciali" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" VBox.vgrow="NEVER">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="15.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="inicialj" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="50.0">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <Label text=")">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="30.0" prefWidth="106.0" text="De la base:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <RadioButton fx:id="canonor" mnemonicParsing="false" selected="true" text="Canónica (i,j)">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="Origen" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Otra:" toggleGroup="$Origen">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </RadioButton>
+                                    <Label text="(">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                       <children>
+                                          <TextField fx:id="baseorigen1i" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" VBox.vgrow="NEVER">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="15.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="baseorigen1j" maxHeight="-Infinity" prefHeight="25.0" prefWidth="30.0">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <Label text="),(">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                       <children>
+                                          <TextField fx:id="baseorigen2i" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" VBox.vgrow="NEVER">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="15.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="baseorigen2j" maxHeight="-Infinity" prefHeight="25.0" prefWidth="30.0">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <Label text=")">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="30.0" prefWidth="106.0" text="A la base:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <RadioButton fx:id="canondes" mnemonicParsing="false" selected="true" text="Canónica (i,j)">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="Destino" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Otra:" toggleGroup="$Destino">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </RadioButton>
+                                    <Label text="(">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                       <children>
+                                          <TextField fx:id="basedestino1i" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" VBox.vgrow="NEVER">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="15.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="basedestino1j" maxHeight="-Infinity" prefHeight="25.0" prefWidth="30.0">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <Label text="),(">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                       <children>
+                                          <TextField fx:id="basedestino2i" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" VBox.vgrow="NEVER">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="15.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="basedestino2j" maxHeight="-Infinity" prefHeight="25.0" prefWidth="30.0">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <Label text=")">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#convertir" text="Convertir">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="(">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="30.0" prefWidth="101.0" text="Resultado:">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </graphic>
+                                    </Label>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                       <children>
+                                          <TextField fx:id="resultadoi" editable="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" VBox.vgrow="NEVER">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="15.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="resultadoj" editable="false" maxHeight="-Infinity" prefHeight="25.0" prefWidth="30.0">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <Label text=")">
+                                       <font>
+                                          <Font name="Arial" size="68.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Gráfico">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="-41.0" layoutY="98.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Canvas fx:id="grafico" height="500.0" width="500.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
