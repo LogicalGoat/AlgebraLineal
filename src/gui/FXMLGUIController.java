@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
 
-public class FXMLGUIController implements Initializable{
+public class FXMLGUIController implements Initializable {
 	@FXML
 	private TextField iniciali;
 	@FXML
@@ -47,8 +47,9 @@ public class FXMLGUIController implements Initializable{
 	@FXML
 	private RadioButton canonor;
 	@FXML
-    private RadioButton canondes;
+	private RadioButton canondes;
 	private GraphicsContext gc;
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		gc = grafico.getGraphicsContext2D();
@@ -56,7 +57,7 @@ public class FXMLGUIController implements Initializable{
 	}
 
 	@FXML
-    void convertir(ActionEvent event) {
+	void convertir(ActionEvent event) {
 		double[] inicial = new double[2];
 		try {
 			inicial[0] = Double.parseDouble(iniciali.getText());
@@ -75,7 +76,7 @@ public class FXMLGUIController implements Initializable{
 			origen1[1] = 0;
 			origen2[0] = 0;
 			origen2[1] = 1;
-		}else{
+		} else {
 			try {
 				origen1[0] = Double.parseDouble(baseorigen1i.getText());
 				origen1[1] = Double.parseDouble(baseorigen1j.getText());
@@ -92,12 +93,12 @@ public class FXMLGUIController implements Initializable{
 		baseorigen1j.clear();
 		baseorigen2i.clear();
 		baseorigen2j.clear();
-		if(Destino.getSelectedToggle().equals(canondes)){
+		if (Destino.getSelectedToggle().equals(canondes)) {
 			destino1[0] = 1;
 			destino1[1] = 0;
 			destino2[0] = 0;
 			destino2[1] = 1;
-		}else{
+		} else {
 			try {
 				destino1[0] = Double.parseDouble(basedestino1i.getText());
 				destino1[1] = Double.parseDouble(basedestino1j.getText());
@@ -121,34 +122,37 @@ public class FXMLGUIController implements Initializable{
 		drawbase(destino1, destino2);
 		gc.setStroke(Color.RED);
 		gc.setLineWidth(2);
-		drawRect(0,0,(inicial[0]*origen1[0])+(inicial[1]*origen2[0]),(inicial[0]*origen1[1])+(inicial[1]*origen2[1]));
+		drawRect(0, 0, (inicial[0] * origen1[0]) + (inicial[1] * origen2[0]),
+				(inicial[0] * origen1[1]) + (inicial[1] * origen2[1]));
 		double[][] matriz = mt(origen1, origen2, destino1, destino2);
 		double[] resultado = mult(inicial, matriz);
 		resultadoi.setText(String.valueOf(resultado[0]));
 		resultadoj.setText(String.valueOf(resultado[1]));
 	}
-	double[] mult(double[] v, double[][] m){
+
+	double[] mult(double[] v, double[][] m) {
 		double[] mult = new double[2];
-		mult[0] = (m[0][0]*v[0])+(m[0][1]*v[1]);
-		mult[1] = (m[1][0]*v[0])+(m[1][1]*v[1]);
+		mult[0] = (m[0][0] * v[0]) + (m[0][1] * v[1]);
+		mult[1] = (m[1][0] * v[0]) + (m[1][1] * v[1]);
 		return mult;
 	}
-	double[][] mt(double[] o1, double[] o2, double[] d1, double[] d2){
+
+	double[][] mt(double[] o1, double[] o2, double[] d1, double[] d2) {
 		double a = d1[0];
 		double b = d2[0];
 		double c = o1[0];
 		double d = d1[1];
 		double e = d2[1];
 		double f = o1[1];
-		double det = (a*e)-(b*d);
-		double a11 = ((e*c)-(b*f))/det;
-		double a21 = ((a*f)-(d*c))/det;
+		double det = (a * e) - (b * d);
+		double a11 = ((e * c) - (b * f)) / det;
+		double a21 = ((a * f) - (d * c)) / det;
 		c = o2[0];
 		f = o2[1];
-		double a12 = ((e*c)-(b*f))/det;
-		double a22 = ((a*f)-(d*c))/det;
-		System.out.println(a11+" "+a12);
-		System.out.println(a21+" "+a22);
+		double a12 = ((e * c) - (b * f)) / det;
+		double a22 = ((a * f) - (d * c)) / det;
+		System.out.println(a11 + " " + a12);
+		System.out.println(a21 + " " + a22);
 		double[][] mt = new double[2][2];
 		mt[0][0] = a11;
 		mt[0][1] = a12;
@@ -156,40 +160,48 @@ public class FXMLGUIController implements Initializable{
 		mt[1][1] = a22;
 		return mt;
 	}
-	void drawbase(double[] base1, double[] base2){
+
+	void drawbase(double[] base1, double[] base2) {
 		gc.setLineWidth(3);
 		drawRect(0, 0, base1[0], base1[1]);
 		drawRect(0, 0, base2[0], base2[1]);
 		gc.setLineWidth(2);
-		drawRect(-50*base1[0], -50*base1[1], 50*base1[0], 50*base1[1]);
-		drawRect(-50*base2[0], -50*base2[1], 50*base2[0], 50*base2[1]);
+		drawRect(-50 * base1[0], -50 * base1[1], 50 * base1[0], 50 * base1[1]);
+		drawRect(-50 * base2[0], -50 * base2[1], 50 * base2[0], 50 * base2[1]);
 		gc.setLineWidth(0.5);
 		for (int i = 0; i < 50; i++) {
-			drawRect((-50*base1[0])+(base2[0]*i), (-50*base1[1])+(base2[1]*i), (50*base1[0])+(base2[0]*i), (50*base1[1])+(base2[1]*i));
-			drawRect((-50*base1[0])-(base2[0]*i), (-50*base1[1])-(base2[1]*i), (50*base1[0])-(base2[0]*i), (50*base1[1])-(base2[1]*i));
-			drawRect((-50*base2[0])+(base1[0]*i), (-50*base2[1])+(base1[1]*i), (50*base2[0])+(base1[0]*i), (50*base2[1])+(base1[1]*i));
-			drawRect((-50*base2[0])-(base1[0]*i), (-50*base2[1])-(base1[1]*i), (50*base2[0])-(base1[0]*i), (50*base2[1])-(base1[1]*i));
+			drawRect((-50 * base1[0]) + (base2[0] * i), (-50 * base1[1]) + (base2[1] * i),
+					(50 * base1[0]) + (base2[0] * i), (50 * base1[1]) + (base2[1] * i));
+			drawRect((-50 * base1[0]) - (base2[0] * i), (-50 * base1[1]) - (base2[1] * i),
+					(50 * base1[0]) - (base2[0] * i), (50 * base1[1]) - (base2[1] * i));
+			drawRect((-50 * base2[0]) + (base1[0] * i), (-50 * base2[1]) + (base1[1] * i),
+					(50 * base2[0]) + (base1[0] * i), (50 * base2[1]) + (base1[1] * i));
+			drawRect((-50 * base2[0]) - (base1[0] * i), (-50 * base2[1]) - (base1[1] * i),
+					(50 * base2[0]) - (base1[0] * i), (50 * base2[1]) - (base1[1] * i));
 		}
 	}
-	private void drawRect(double xi, double yi, double xf, double yf){
-		xi*=20;
-		xf*=20;
-		yi*=20;
-		yf*=20;
-		gc.strokeLine(xi+(grafico.getWidth()/2), (grafico.getWidth()/2)-yi, xf+grafico.getWidth()/2, (grafico.getWidth()/2)-yf);
+
+	private void drawRect(double xi, double yi, double xf, double yf) {
+		xi *= 20;
+		xf *= 20;
+		yi *= 20;
+		yf *= 20;
+		gc.strokeLine(xi + (grafico.getWidth() / 2), (grafico.getWidth() / 2) - yi, xf + grafico.getWidth() / 2,
+				(grafico.getWidth() / 2) - yf);
 	}
-	void clear(){
+
+	void clear() {
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, grafico.getWidth(), grafico.getHeight());
 		gc.setStroke(Color.BLACK);
 		gc.setLineWidth(2);
-		//Arriba
+		// Arriba
 		gc.strokeLine(0, 0, grafico.getWidth(), 0);
-		//Derecha
+		// Derecha
 		gc.strokeLine(grafico.getWidth(), 0, grafico.getWidth(), grafico.getHeight());
-		//Abajo
-		gc.strokeLine(0, grafico.getHeight(), grafico.getWidth(),grafico.getHeight());
-		//Izquierda
+		// Abajo
+		gc.strokeLine(0, grafico.getHeight(), grafico.getWidth(), grafico.getHeight());
+		// Izquierda
 		gc.strokeLine(0, 0, 0, grafico.getHeight());
 	}
 }

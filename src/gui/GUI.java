@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 /**
  * GUI
  */
-public class GUI extends Application{
+public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
